@@ -1,0 +1,38 @@
+[
+  {
+    "id": "valid_buy_order",
+    "action": "buy",
+    "symbol": "AAPL",
+    "qty": 10,
+    "quote_age_seconds": 1.0,
+    "idempotency_key": "ord-001",
+    "expected_status": "filled"
+  },
+  {
+    "id": "idempotent_replay",
+    "action": "buy",
+    "symbol": "AAPL",
+    "qty": 10,
+    "quote_age_seconds": 1.0,
+    "idempotency_key": "ord-001",
+    "expected_status": "idempotent_replay"
+  },
+  {
+    "id": "stale_quote_rejected",
+    "action": "buy",
+    "symbol": "MSFT",
+    "qty": 5,
+    "quote_age_seconds": 12.0,
+    "idempotency_key": "ord-002",
+    "expected_status": "rejected_stale_quote"
+  },
+  {
+    "id": "insufficient_cash_rejected",
+    "action": "buy",
+    "symbol": "NVDA",
+    "qty": 100000,
+    "quote_age_seconds": 0.5,
+    "idempotency_key": "ord-003",
+    "expected_status": "rejected_insufficient_cash"
+  }
+]
